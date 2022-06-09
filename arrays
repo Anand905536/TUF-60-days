@@ -83,3 +83,82 @@ public class practise1 {
 	}
 
 }
+
+
+
+
+
+
+OPTIMAL APPROACH
+
+
+
+
+
+ public static void optimal(int a[][])
+    {
+        int n=a.length;
+        int m=a[0].length;
+        boolean row0=false;
+        boolean col0=false;
+	
+//          checking that if any index is zero in col[0] or roW[0]
+
+        for(int i=0;i<n;i++)if(a[i][0]==0)col0=true;
+        for(int j=0;j<m;j++)if(a[0][j]==0)row0=true;
+        
+        
+        
+//         iterating from 1 to n-1  and mark 0 in oth row and 0th column corresponding to index
+
+        for(int i=1;i<n;i++)
+        {
+            for(int j=1;j<m;j++)
+            {
+                if(a[i][j]==0)
+                {
+                    a[0][j]=0;
+                    a[i][0]=0;
+                }
+            }
+        }
+	
+//         inserting zero in whole row and column which has 0 in zeroth row or column
+        
+        for(int i=1;i<n;i++){
+            if(a[i][0]==0)
+                for(int j=0;j<m;j++)
+                {
+                    a[i][j]=0;
+                }
+        }
+        
+         for(int j=1;j<m;j++){
+            if(a[0][j]==0)
+                for(int i=0;i<n;i++)
+                {
+                    a[i][j]=0;
+                }
+        }
+        
+        
+//         if any index of zeroth row and column is zero then make whole row and column zero
+
+        if(row0)
+        {
+            for(int j=0;j<m;j++)
+            {
+                a[0][j]=0;
+            }
+        }
+        
+        
+        
+         if(col0)
+        {
+            for(int i=0;i<n;i++)
+            {
+                a[i][0]=0;
+            }
+        }
+        
