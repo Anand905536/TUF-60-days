@@ -1,0 +1,60 @@
+#include <bits/stdc++.h> 
+int modularExponentiation(int x, int n, int m) {
+	long long result=1;
+    while(n>0)
+    {
+        if(n%2!=0) {
+         result=(result*x%m)%m;
+        }
+        
+        x=(1LL*x%m*x%m)%m;
+        n/=2;
+      
+    }
+  
+    return result;
+}
+
+
+
+
+
+RECURSIVE ITERATIVE and with FOR loop approach to find the exponential terms
+
+
+
+
+long power(int n,int m)
+{
+	if(m==0)  return 1 ;
+	long temp=power(n,m/2);
+	long result=temp*temp;
+	if(m%2==1) result*=n;
+	return result;
+}
+
+
+
+long itpower(int n,int m)
+{
+	long result=1;
+	while(m)
+	{
+		if(m%2==1) result*=n;
+		n*=n;
+		m/=2;
+	}
+	return result;
+}
+
+
+
+long byloop(int n,int m)
+{
+	long result=1;
+	for(int i=1;i<=m;i++)
+	{    
+        result*=n;
+	}
+	return result;
+}
