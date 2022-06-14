@@ -1,0 +1,51 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+  public static String fourSum(int[] arr, int target, int n) {
+      String ans="";
+       if (arr == null || arr.length == 0){
+            return ans;
+       }
+//         int n = arr.length;
+        Arrays.sort(arr); 
+        for (int i = 0; i < n; i++) 
+        {
+        int target_3 = target - arr[i];
+        for (int j = i + 1; j < n; j++) 
+        {
+            int target_2 = target_3 - arr[j];
+            int front = j + 1;
+            int back = n - 1;
+            
+            while(front < back) 
+            {
+               int two_sum = arr[front] + arr[back];
+                 if (two_sum < target_2) front++;
+                 else if (two_sum > target_2) back--;
+                else {
+                    ans="Yes";
+                   return ans;
+//                         List<Integer> quad = new ArrayList<>(); 
+//                         quad.add(num[i]);
+//                         quad.add(num[j]);
+//                         quad.add(num[front]);
+//                         quad.add(num[back]);
+//                         res.add(quad);
+                    
+//                         // Processing the duplicates of number 3
+//                         while (front < back && num[front] == quad.get(2)) ++front;
+                    
+//                         // Processing the duplicates of number 4
+//                         while (front < back && num[back] == quad.get(3)) --back;
+                
+                    }
+                }
+                
+          }
+      }
+      ans="No";
+      return ans;
+     
+  }
+}
+
