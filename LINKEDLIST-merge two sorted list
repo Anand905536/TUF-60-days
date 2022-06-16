@@ -1,0 +1,39 @@
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+	public static LinkedListNode<Integer> sortTwoLists(LinkedListNode<Integer> first, LinkedListNode<Integer> second) {
+		if(first==null)return second;
+        if(second==null)return first;
+        
+//         swapping
+
+        if(first.data>second.data)
+        {
+            LinkedListNode<Integer> temp=first;
+            first=second;
+            second=temp;
+        }
+        LinkedListNode<Integer> ans=first;
+        while(first!=null && second!=null)
+        {
+            LinkedListNode<Integer> tmp=null;
+            while(first!=null && first.data<=second.data)       --(checking l1.data<=l2.data)
+            {
+                tmp=first;
+                first=first.next;
+            }
+            tmp.next=second;
+            
+//             swapping
+
+          LinkedListNode<Integer> temp=first;
+            first=second;
+            second=temp;
+            
+        }
+        
+        
+        return ans;
+	}
+}
