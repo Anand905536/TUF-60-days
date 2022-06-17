@@ -1,0 +1,38 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution {
+	public static int subarraysXor(ArrayList<Integer> arr, int x) {
+  
+        HashMap<Integer,Integer> map=new HashMap<>();
+        
+        int count=0;int xor=0;
+        
+        for(int i=0;i<arr.size();i++)
+        {
+            xor=xor^arr.get(i);
+            
+//             checking xor^x=y already exist in map or not if exist then increase the count=y;
+
+           if(map.get(xor^x)!=null)
+                count+=map.get(xor^x);
+                
+                
+//             checking if xor is equal to x or not if equals then increase the count by one
+
+            if(xor==x)count++;
+            
+            
+//             checking if map has currentlly find xor or not ,if find, then increase the count of existing key of map
+
+            if(map.get(xor)!=null)
+                map.put(xor,map.get(xor)+1);
+                
+//            else insert it to map 
+
+            else map.put(xor,1);
+        }
+        return count;
+}
+}
