@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+public class Solution {
+	public static int longestSubSeg(ArrayList<Integer> arr , int n, int k) {
+	int countzero=0;
+        int ans=0;
+        int maxans=0;
+        int l=0;
+        for(int r=0;r<n;r++)
+        {
+             if(arr.get(r)==0)countzero++;
+            if(countzero>k){
+                
+           while(countzero!=k)
+            {
+                
+
+                if(arr.get(l)==0){
+                  countzero--;
+               }
+               l++;
+            }
+            }
+             ans=r-l+1;
+            if(ans>maxans)maxans=ans;
+         }     
+        return maxans;
+	}
+}
