@@ -1,0 +1,43 @@
+import java.util.*;
+public class Solution {
+   public static boolean isvalide(int dis,int a[],int c)
+   {
+       int placed=1;
+       int lastplaced=a[0];
+       for(int i=1;i<a.length;i++)
+       {
+         if(a[i]-lastplaced>=dis)
+         {
+             placed++;
+             lastplaced=a[i];
+         }
+       }
+       if(placed>=c){
+           return true;
+       }
+      return false;
+   }
+    public static int chessTournament(int[] positions, int n,  int c) 
+	{
+        Arrays.sort(positions);
+          int low=0;
+        int high=positions[n-1]-positions[0];
+        int bestgap=0;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(isvalide(mid,positions,c))
+            {
+                low=mid+1;
+                bestgap=mid;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return bestgap;
+        
+        
+    }
+
+}
