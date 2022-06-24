@@ -1,0 +1,24 @@
+
+
+import java.util.ArrayList;
+
+public class Solution 
+{
+    public static void f(TreeNode<Integer> root,int level,ArrayList<Integer> ds)
+    {
+        if(root==null) return;
+        if(level==ds.size())
+        {
+            ds.add(root.data);
+        }
+        f(root.left,level+1,ds);
+        f(root.right,level+1,ds);
+        
+    }
+    public static ArrayList<Integer> getLeftView(TreeNode<Integer> root) 
+    {
+        ArrayList<Integer> ds=new ArrayList<Integer>();
+        f(root,0,ds);
+        return ds;
+    }
+}
